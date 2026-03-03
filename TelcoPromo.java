@@ -7,12 +7,13 @@ public class TelcoPromo {
     UsagePromo promo = new TelcoAllowance();
     UnliCallsTextOffer unli = new UnliCallTextPackage();   
 
-    System.out.println("Smart Data Usage Offer and price: " + promo.showAllowance(smart.getTelcoName(), smart.getPromoPrice()));
-    System.out.println("Globe Data Usage Offer and price" + promo.showAllowance(globe.getTelcoName(), globe.getPromoPrice()));
-    System.out.println("Ditto Data Usage Offer and price" + promo.showAllowance(ditto.getTelcoName(), ditto.getPromoPrice()));
+    System.out.println("Smart Data Usage Offer and price: " + smart.accept(promo, smart.getPromoPrice()));
+    System.out.println("Globe Data Usage Offer and price: " + globe.accept(promo, globe.getPromoPrice()));
+    System.out.println("Ditto Data Usage Offer and price: " + ditto.accept(promo, ditto.getPromoPrice()));
 
-    System.out.println("\nSmart unlimited calls and text package: " + unli.showUnliCallsTextOffer(smart.getTelcoName(), smart.getUnliCallText()));
-    System.out.println("Globe unlimited calls and text package: " + unli.showUnliCallsTextOffer(globe.getTelcoName(), globe.getUnliCallText()));
-    System.out.println("Ditto unlimited calls and text package: " + unli.showUnliCallsTextOffer(ditto.getTelcoName(), ditto.getUnliCallText()));
+    System.out.println("\nSmart unlimited calls and text package: " + smart.accept(unli, smart.getUnliCallText()));
+System.out.println("Globe unlimited calls and text package: " + globe.accept(unli, globe.getUnliCallText()));
+System.out.println("Ditto unlimited calls and text package: " + ditto.accept(unli, ditto.getUnliCallText()));
+
   }
 }

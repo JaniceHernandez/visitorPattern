@@ -7,7 +7,6 @@ public class TelcoAllowance implements UsagePromo {
 
     public TelcoAllowance() {
         allowanceMap = new HashMap<>();
-        // Store data allowances as "XGB for ₱price"
         allowanceMap.put("Smart", "15GB");
         allowanceMap.put("Globe", "10GB");
         allowanceMap.put("Ditto", "8GB");
@@ -15,11 +14,7 @@ public class TelcoAllowance implements UsagePromo {
 
     @Override
     public String showAllowance(String telcoName, double money) {
-        String allowance = allowanceMap.get(telcoName);
-        if (allowance != null) {
-            return allowance + " for ₱" + money;
-        } else {
-            return "No data promo available.";
-        }
-    }
+        return allowanceMap.getOrDefault(telcoName, "No allowance available") + " for ₱" + money;
+}
+
 }

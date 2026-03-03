@@ -1,15 +1,13 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class UnliCallTextPackage implements UnliCallsTextOffer {
-
-    private Map<String, String> unliMap;
-
-    public UnliCallTextPackage() {
-        unliMap = new HashMap<>();
-        unliMap.put("Smart", "Unlimited calls & texts to all networks nationwide.");
-        unliMap.put("Globe", "Unlimited calls & texts within Globe network only.");
-        unliMap.put("Ditto", "Unlimited calls & texts to all networks nationwide.");
+    
+    private static Map<String, String> unliCallTextMap = new HashMap<>();
+    
+    static {
+        unliCallTextMap.put("Smart", "No unlimited calls and texts offer. Calls and texts are charged per use.");
+        unliCallTextMap.put("Globe", "Unlimited calls and texts to Globe subscribers within the country. Calls and texts to other networks are charged extra.");
+        unliCallTextMap.put("Ditto", "Unlimited calls and texts to all networks within the country.");
     }
 
     @Override
@@ -17,11 +15,7 @@ public class UnliCallTextPackage implements UnliCallsTextOffer {
         if (!unliCallText) {
             return "No unlimited calls & texts. Charged per use.";
         }
-        String offer = unliMap.get(telcoName);
-        if (offer != null) {
-            return offer;
-        } else {
-            return "No unlimited package available.";
-        }
+        return unliCallTextMap.getOrDefault(telcoName, telcoName + " does not offer unlimited calls and texts.");
     }
+
 }
